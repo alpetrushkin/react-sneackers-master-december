@@ -1,41 +1,29 @@
 import React from 'react';
 
-const Drawer = (props) => {
+const Drawer = ({onClose, items = []}) => {
 
   return (
     <div className="overlay">
       <div className="drawer">
         <h2 className="mb-30 d-flex justify-between">
           Корзина
-          <img onClick={props.onClose} className="cu-p" src="/img/btn-remove.svg" alt="Remove"/>
+          <img onClick={onClose} className="cu-p" src="/img/btn-remove.svg" alt="Remove"/>
         </h2>
 
         <div className="items">
-          <div className="cartItem d-flex align-center mb-20">
-            <div style={{backgroundImage: 'url(/img/sneakers/1.jpg)'}} className="cartItemImg"></div>
-
-            <div className="mr-20 flex">
-              <p className="mb-5">Мужские Кроссовки Nike Air Max 270</p>
-              <b>12 999 руб.</b>
-            </div>
-            <img className="removeBtn" src="/img/btn-remove.svg" alt="Remove"/>
-          </div>
-          <div className="cartItem d-flex align-center mb-20">
-            <div style={{backgroundImage: 'url(/img/sneakers/1.jpg)'}} className="cartItemImg"></div>
-            <div className="mr-20 flex">
-              <p className="mb-5">Мужские Кроссовки Nike Air Max 270</p>
-              <b>12 999 руб.</b>
-            </div>
-            <img className="removeBtn" src="/img/btn-remove.svg" alt="Remove"/>
-          </div>
-          <div className="cartItem d-flex align-center mb-20">
-            <div style={{backgroundImage: 'url(/img/sneakers/1.jpg)'}} className="cartItemImg"></div>
-            <div className="mr-20 flex">
-              <p className="mb-5">Мужские Кроссовки Nike Air Max 270</p>
-              <b>12 999 руб.</b>
-            </div>
-            <img className="removeBtn" src="/img/btn-remove.svg" alt="Remove"/>
-          </div>
+          {items.map(odj => {
+            return (
+              <div className="cartItem d-flex align-center mb-20">
+                <div style={{backgroundImage: `url(${odj.imageUrl})`}} className="cartItemImg">
+                </div>
+                <div className="mr-20 flex">
+                  <p className="mb-5">{odj.title}</p>
+                  <b>{odj.price} руб.</b>
+                </div>
+                <img className="removeBtn" src="/img/btn-remove.svg" alt="Remove"/>
+              </div>
+            )
+          })}
         </div>
 
         <div className="cartTotalBlock">
