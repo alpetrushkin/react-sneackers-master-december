@@ -41,7 +41,13 @@ function App() {
 
         <div className="d-flex flex-wrap">
           {arr.map(obj => (
-            <Card title={obj.title} price={obj.price} imageUrl={obj.imageUrl}/>
+            <Card
+              title={obj.title}
+              price={obj.price}
+              imageUrl={obj.imageUrl}
+              onFavorite={() => console.log('Добавили в закладки')}
+              onPlus={() => console.log('Нажали на плюс')}
+            />
           ))}
         </div>
       </div>
